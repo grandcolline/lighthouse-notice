@@ -34,7 +34,7 @@ RUN apt-get update && \
 RUN mkdir -p /app/reports
 VOLUME /app/reports
 
-ADD ./scripts /app/scripts
+ADD . /app
 
 WORKDIR /app
 
