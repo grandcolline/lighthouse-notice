@@ -13,7 +13,7 @@ sample
 docker run --rm \
 	-e "CHECK_URL=https://example.com" \
 	-e "SLACK_URL=https://hooks.slack.com/services/XXXXX/XXXXX/XXXXX" \
-	-e "SLACK_CHANNEL=#times_grandcolline" \
+	-e "SLACK_CHANNEL=#channel_name" \
 	-e "AWS_ACCESS_KEY_ID=AKIXXXXXX" \
 	-e "AWS_SECRET_ACCESS_KEY=XXXXXXXX" \
 	-e "AWS_S3_BUCKET_PATH=example-bucket" \
