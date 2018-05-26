@@ -33,3 +33,7 @@ docker run --rm \
 |`AWS_DEFAULT_REGION`||未入力の場合`ap-northeast-1`|
 |`AWS_S3_BUCKET_PATH`|||
 
+## preview
+
+![slack-notice](https://github.com/grandcolline/lighthouse-notice/blob/images/slack-notice.png)
+
