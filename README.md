@@ -2,10 +2,23 @@
 
 docker上でlighthouseを実行して、slackに通知＆S3にレポートを保存します。
 
+## Docker Image
 
-## usage
+[grandcolline/lighthouse-notice](https://hub.docker.com/r/grandcolline/lighthouse-notice/)
 
-TODO
+## Usage
+
+sample
+```
+docker run --rm \
+	-e "CHECK_URL=https://example.com" \
+	-e "SLACK_URL=https://hooks.slack.com/services/XXXXX/XXXXX/XXXXX" \
+	-e "SLACK_CHANNEL=#times_grandcolline" \
+	-e "AWS_ACCESS_KEY_ID=AKIXXXXXX" \
+	-e "AWS_SECRET_ACCESS_KEY=XXXXXXXX" \
+	-e "AWS_S3_BUCKET_PATH=example-bucket" \
+	-t -i grandcolline/lighthouse
+```
 
 ## Environment Variables
 
