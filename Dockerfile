@@ -6,14 +6,15 @@ USER root
 # timezone
 RUN ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
 
-# install basic utils
+# install utils
 RUN apt-get update && \
 	apt-get install -y --no-install-recommends \
 		apt-transport-https \
 		ca-certificates \
 		curl \
 		gnupg \
-		jq
+		jq \
+	&& apt-get clean
 
 # google-chrome
 RUN curl -sSL https://dl.google.com/linux/linux_signing_key.pub | apt-key add - && \
@@ -28,8 +29,22 @@ RUN curl -sSL https://dl.google.com/linux/linux_signing_key.pub | apt-key add - 
 ARG CACHEBUST=1
 RUN apt-get update && \
 	apt-get install -y --no-install-recommends npm && \
+	sleep 10 && \
 	npm --global install yarn && \
+	sleep 30 && \
 	yarn global add lighthouse
+
+# AWS CLI
+RUN apt-get update && \
+	apt-get install -y --no-install-recommends \
+		python \
+		python-dev \
+		python-pip \
+		python-setuptools \
+		groff \
+		less \
+	&& pip install --upgrade awscli \
+	&& apt-get clean
 
 RUN mkdir -p /app/reports
 VOLUME /app/reports
