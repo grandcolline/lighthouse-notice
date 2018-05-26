@@ -24,16 +24,22 @@ docker run --rm \
 
 |Name|Required||
 |:-:|:-:|:-|
-|`CHECK_URL`|*|lighthouseで調査するURL|
+|`CHECK_URL`|必須|lighthouseで調査するURL|
 |`REPORT_NAME`||レポートの名前。未入力の場合`date "+%Y%m%d%H%M"`|
-|`SLACK_URL`||slackのincomming-webhookのURL|
-|`SLACK_CHANNEL`||slack通知するチャンネル名|
-|`AWS_ACCESS_KEY_ID`|||
-|`AWS_SECRET_ACCESS_KEY`|||
+|`SLACK_URL`|slack通知するなら必須|slackのincomming-webhookのURL|
+|`SLACK_CHANNEL`|slack通知するなら必須|slack通知するチャンネル名|
+|`AWS_ACCESS_KEY_ID`|S3送信するなら必須||
+|`AWS_SECRET_ACCESS_KEY`|S3送信するなら必須||
 |`AWS_DEFAULT_REGION`||未入力の場合`ap-northeast-1`|
-|`AWS_S3_BUCKET_PATH`|||
+|`AWS_S3_BUCKET_PATH`|S3送信するなら必須||
 
 ## preview
 
 ![slack-notice](https://github.com/grandcolline/lighthouse-notice/blob/images/slack-notice.png)
+
+
+## Note
+
+* ローカルで実行は別にChromeでやればいいから、CIに組み込むみたいな使い道を想定してる。
+* `/app/reports`をマウントすればレポートの永続化できそう
 
