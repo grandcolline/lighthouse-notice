@@ -6,6 +6,9 @@ USER root
 # timezone
 RUN ln -sf /usr/share/zoneinfo/Asia/Tokyo /etc/localtime
 
+# For npm install
+ARG CACHEBUST=1
+
 # install utils
 RUN apt-get update && \
 	apt-get install -y --no-install-recommends \
@@ -14,7 +17,11 @@ RUN apt-get update && \
 		curl \
 		gnupg \
 		jq \
+		npm \
 	&& apt-get clean
+
+# yarm
+RUN npm --global install yarn
 
 # google-chrome
 RUN curl -sSL https://dl.google.com/linux/linux_signing_key.pub | apt-key add - && \
@@ -26,13 +33,7 @@ RUN curl -sSL https://dl.google.com/linux/linux_signing_key.pub | apt-key add - 
 	mkdir -p /home/chrome && chown -R chrome:chrome /home/chrome
 
 # lighthouse 
-ARG CACHEBUST=1
-RUN apt-get update && \
-	apt-get install -y --no-install-recommends npm && \
-	sleep 10 && \
-	npm --global install yarn && \
-	sleep 30 && \
-	yarn global add lighthouse
+RUN yarn global add lighthouse
 
 # AWS CLI
 RUN apt-get update && \
