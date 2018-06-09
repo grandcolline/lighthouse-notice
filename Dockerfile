@@ -18,10 +18,8 @@ RUN apt-get update && \
 		gnupg \
 		jq \
 		npm \
+		yarn \
 	&& apt-get clean
-
-# yarm
-RUN npm --global install yarn
 
 # google-chrome
 RUN curl -sSL https://dl.google.com/linux/linux_signing_key.pub | apt-key add - && \
